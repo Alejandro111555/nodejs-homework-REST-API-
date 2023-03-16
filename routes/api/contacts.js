@@ -2,26 +2,25 @@ const express = require("express");
 
 const ctrl = require("../../controllers/contacts");
 
+<<<<<<< Updated upstream
 const validateBody = require("../../middlewares/validateBody");
 
 const isValidId = require("../../middlewares/isValidId");
+=======
+const { validateBody, isValidId } = require("../../middlewares");
+>>>>>>> Stashed changes
 
 const { schemas } = require("../../models/contact");
 
 const router = express.Router();
 
-router.get("/", ctrl.listContacts);
+router.get("/", ctrl.getAll);
 
-router.get("/:id", isValidId, ctrl.getContactById);
+router.get("/:id", isValidId, ctrl.getById);
 
-router.post("/", validateBody(schemas.addSchema), ctrl.addContact);
+router.post("/", validateBody(schemas.addSchema), ctrl.add);
 
-router.put(
-  "/:id",
-  isValidId,
-  validateBody(schemas.addSchema),
-  ctrl.updateContact
-);
+router.put("/:id", isValidId, validateBody(schemas.addSchema), ctrl.updateById);
 
 router.patch(
   "/:id/favorite",
@@ -30,6 +29,6 @@ router.patch(
   ctrl.updateFavorite
 );
 
-router.delete("/:id", isValidId, ctrl.removeContact);
+router.delete("/:id", isValidId, ctrl.deleteById);
 
 module.exports = router;

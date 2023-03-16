@@ -1,6 +1,10 @@
 const { isValidObjectId } = require("mongoose");
 
+<<<<<<< Updated upstream
 const { HttpError } = require("../helpers");
+=======
+const { HttpError } = require("../utils/HttpError");
+>>>>>>> Stashed changes
 
 const isValidId = (req, res, next) => {
   const { id } = req.params;

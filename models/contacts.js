@@ -3,10 +3,7 @@
 // const { nanoid } = require("nanoid");
 // const Contact = require("./contact");
 
-// const listContacts = async () => {
-//   const data = await fs.readFile(contactsPath);
-//   return JSON.parse(data);
-// };
+const contactsPath = path.join(__dirname, DB_HOST);
 
 // const getContactById = async (id) => {
 //   const contacts = await listContacts();
