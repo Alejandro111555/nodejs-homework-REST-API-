@@ -8,6 +8,10 @@ const contactSchema = new Schema({
   email: String,
   phone: String,
   favorite: Boolean,
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
 });
 
 contactSchema.post("save", handleMongooseError);
