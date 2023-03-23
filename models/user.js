@@ -7,6 +7,10 @@ const emailRegexp =
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   password: {
     type: String,
     required: [true, "Password is required"],
@@ -24,6 +28,10 @@ const userSchema = new Schema({
   token: {
     type: String,
     default: null,
+  },
+  avatarURL: {
+    type: String,
+    required: true,
   },
 });
 
