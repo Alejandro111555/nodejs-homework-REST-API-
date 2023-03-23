@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 const { HttpError } = require("../helpers");
-=======
-const { HttpError } = require("../utils/HttpError");
->>>>>>> Stashed changes
 
 const validateBody = (schema) => {
   const func = (req, res, next) => {
@@ -17,8 +13,3 @@ const validateBody = (schema) => {
 };
 
 module.exports = validateBody;
-<<<<<<< Updated upstream
-=======
-
-s;
->>>>>>> Stashed changes
