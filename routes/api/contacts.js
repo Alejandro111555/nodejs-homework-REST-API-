@@ -2,33 +2,39 @@ const express = require("express");
 
 const ctrl = require("../../controllers/contacts");
 
-<<<<<<< Updated upstream
-const validateBody = require("../../middlewares/validateBody");
-
-const isValidId = require("../../middlewares/isValidId");
-=======
-const { validateBody, isValidId } = require("../../middlewares");
->>>>>>> Stashed changes
+const { validateBody, isValidId, authenticate } = require("../../middlewares");
 
 const { schemas } = require("../../models/contact");
 
 const router = express.Router();
 
-router.get("/", ctrl.getAll);
+router.get("/", authenticate, ctrl.listContacts);
 
-router.get("/:id", isValidId, ctrl.getById);
+router.get("/:id", authenticate, isValidId, ctrl.getContactById);
 
-router.post("/", validateBody(schemas.addSchema), ctrl.add);
+router.post(
+  "/",
+  authenticate,
+  validateBody(schemas.addSchema),
+  ctrl.addContact
+);
 
-router.put("/:id", isValidId, validateBody(schemas.addSchema), ctrl.updateById);
+router.put(
+  "/:id",
+  authenticate,
+  isValidId,
+  validateBody(schemas.addSchema),
+  ctrl.updateContact
+);
 
 router.patch(
   "/:id/favorite",
   isValidId,
+  authenticate,
   validateBody(schemas.updateFavoriteSchema),
   ctrl.updateFavorite
 );
 
-router.delete("/:id", isValidId, ctrl.deleteById);
+router.delete("/:id", authenticate, isValidId, ctrl.removeContact);
 
 module.exports = router;
